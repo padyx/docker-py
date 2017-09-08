@@ -679,6 +679,22 @@ class Placement(dict):
                 })
 
 
+class NetworkAttachmentConfig(dict):
+    """
+        Placement constraints to be used as part of a :py:class:`TaskTemplate`
+
+        Args:
+            target (string): Network to attach to
+            aliases (list): List of aliases under which the service should be
+                reachable on the network
+    """
+    def __init__(self, target=None, aliases=None):
+        if target is not None:
+            self['Target'] = target
+        if aliases is not None:
+            self['Aliases'] = aliases
+
+
 class PlacementPreference(dict):
     """
         Placement preference to be used as an element in the list of
