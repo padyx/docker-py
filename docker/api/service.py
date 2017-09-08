@@ -171,7 +171,7 @@ class ServiceApiMixin(object):
             'Labels': labels,
             'TaskTemplate': task_template,
             'Mode': mode,
-            'Networks': utils.convert_service_networks(networks),
+            'Networks': networks,
             'EndpointSpec': endpoint_spec
         }
 

@@ -26,8 +26,8 @@ class TaskTemplate(dict):
         placement (Placement): Placement instructions for the scheduler.
             If a list is passed instead, it is assumed to be a list of
             constraints as part of a :py:class:`Placement` object.
-        networks (:py:class:`list`): List of network names or IDs to attach
-            the containers to.
+        networks (:py:class:`list`): List of :py:class:`Network`, network names
+            or IDs to attach the containers to.
         force_update (int): A counter that triggers an update even if no
             relevant parameters have been changed.
     """
@@ -68,6 +68,10 @@ class TaskTemplate(dict):
     @property
     def placement(self):
         return self.get('Placement')
+
+    @property
+    def networks(self):
+        return self.get('Networks')
 
 
 class ContainerSpec(dict):
@@ -672,6 +676,22 @@ class Placement(dict):
                 self['Platforms'].append({
                     'Architecture': plat[0], 'OS': plat[1]
                 })
+
+
+class Network(dict):
+    """
+        Placement constraints to be used as part of a :py:class:`TaskTemplate`
+
+        Args:
+            network (string): Network to attach to
+            aliases (list): List of aliases under which the service should be
+                reachable on the network
+    """
+    def __init__(self, network=None, aliases=None):
+        if network is not None:
+            self['Target'] = network
+        if aliases is not None:
+            self['Aliases'] = aliases
 
 
 class PlacementPreference(dict):

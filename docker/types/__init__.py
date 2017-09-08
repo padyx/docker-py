@@ -5,8 +5,8 @@ from .healthcheck import Healthcheck
 from .networks import EndpointConfig, IPAMConfig, IPAMPool, NetworkingConfig
 from .services import (
     ConfigReference, ContainerSpec, DNSConfig, DriverConfig, EndpointSpec,
-    Mount, Placement, PlacementPreference, Privileges, Resources,
-    RestartPolicy, RollbackConfig, SecretReference, ServiceMode, TaskTemplate,
-    UpdateConfig
+    Mount, Network, Placement, PlacementPreference, Privileges,
+    Resources, RestartPolicy, RollbackConfig, SecretReference, ServiceMode,
+    TaskTemplate, UpdateConfig
 )
 from .swarm import SwarmSpec, SwarmExternalCA

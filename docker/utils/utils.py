@@ -200,6 +200,7 @@ def convert_service_networks(networks):
     for n in networks:
         if isinstance(n, six.string_types):
             n = {'Target': n}
+        # Networks don't need to be converted
         result.append(n)
     return result
 
